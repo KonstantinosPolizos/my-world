@@ -1,0 +1,66 @@
+
+{% extends "master.html" %}
+{% load static %}
+
+{% block title %} My World | Register {% endblock %}
+
+{% block css_links %}
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/signin.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <main class="form-signin text-center">
+        <form method="post">
+            {% csrf_token %}   
+            <h1 class="h3 mb-3 fw-normal">My World | Register</h1>
+
+            <div class="form-floating mb-2">
+                <input name="username" type="username" class="form-control" id="floatingUsername" placeholder="johnsnow">
+                <label for="floatingUsername">Username</label>
+            </div>
+
+            <div class="form-floating mb-2">
+                <input name="email" type="email" class="form-control" id="floatingEmail" placeholder="johnsnow@email.com">
+                <label for="floatingEmail">Email</label>
+            </div>
+            
+            <div class="form-floating mb-2">
+                <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                <label for="floatingPassword">Password</label>
+            </div>
+
+            <div class="form-floating mt-0">
+                <input name="re_password" type="password" class="form-control" id="floatingRePassword" placeholder="Re-Password">
+                <label for="floatingRePassword">Re-Password</label>
+            </div>
+
+            {% if error_message %}
+                <p style="color: red;">{{ error_message }}</p>
+            {% endif %}
+
+            <input type="hidden" name="next" value="{{ next }}" />
+            
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Register</button>
+        </form>
+        <div class="mt-2 mb-3 text-end">
+            <a href={% url 'user-login' %}>Go back to login!</a>
+        </div>
+    </main>
+{% endblock %}
