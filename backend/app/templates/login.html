@@ -31,7 +31,7 @@
             {% csrf_token %}   
             <h1 class="h3 mb-3 fw-normal">My World | Login</h1>
 
-            <div class="form-floating mb-2">
+            <div class="form-floating mb-1">
                 <input name="username" type="username" class="form-control" id="floatingInput" placeholder="johnsnow">
                 <label for="floatingInput">Username</label>
             </div>
@@ -51,7 +51,7 @@
             
         </form>
         <div class="mt-2 mb-3 text-end">
-            <a href={% url 'user-register' %}>Don't having an account?</a>
+            <a class="text-decoration-none" href={% url 'user-register' %}>Don't having an account?</a>
         </div>
     </main>
 {% endblock %}
